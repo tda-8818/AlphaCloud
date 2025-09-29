@@ -4,7 +4,7 @@
 
 > Professional portfolio website for Alpha Cloud PTY LTD, showcasing 15+ years of enterprise cloud architecture and cybersecurity expertise.
 
-🌐 **Live Site**: [alphacloud.com.au](https://alphacloud.com.au) *(replace with your actual URL)*
+🌐 **Live Site**: [alphacloud.com.au](https://alphacloud.com.au)
 
 ---
 
