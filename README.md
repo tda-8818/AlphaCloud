@@ -1,4 +1,4 @@
-<img width="1512" height="822" alt="Screenshot 2025-09-29 at 9 54 44 pm" src="https://github.com/user-attachments/assets/4cd9ccfb-1b18-48d7-b40a-e37c1d3e670d" /># Alpha Cloud - Enterprise Cloud Security Solutions
+# Alpha Cloud - Enterprise Cloud Security Solutions
 
 ![Alpha Cloud Banner](./public/preview-logo.png)
 
@@ -80,3 +80,14 @@ Alpha Cloud is a professional portfolio website showcasing enterprise-grade clou
 
 ---
 
+## Licence
+
+Proprietary License
+
+Copyright (c) 2025 Alpha Cloud PTY LTD
+
+All rights reserved. This software and associated documentation files 
+(the "Software") are proprietary to Alpha Cloud PTY LTD.
+
+Unauthorised copying, distribution, modification, or use of this Software 
+is strictly prohibited.
