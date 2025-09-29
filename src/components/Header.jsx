@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/logo.png";
+import logo from "../assets/preview-logo.png";
 
 // Header Component - Reusable across all sections.
 const Header = ({ scrollToSection, isMenuOpen, setIsMenuOpen }) => (

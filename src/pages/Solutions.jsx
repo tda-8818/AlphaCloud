@@ -36,7 +36,7 @@ const Solutions = () => {
         <motion.div
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true, threshold: 0.1 }}
+          viewport={{ once: false, threshold: 0.3 }}
           variants={fadeInUp}
           className="text-center mb-16"
         >
@@ -49,7 +49,7 @@ const Solutions = () => {
         <motion.div
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true, threshold: 0.1 }}
+          viewport={{ once: false, threshold: 0.3 }}
           variants={staggerContainer}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
         >

@@ -22,44 +22,6 @@ const About = () => {
               Expertise spans building strategy, architecture, design, migration, automation and implementation of data centre, software defined networking, cyber security, hybrid cloud and wireless integrated solutions. Having worked across Government, Health, Financial, Telecommunication, Oil/Gas, Utilities, Education and Commercial sectors globally.
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-              <div className="bg-black/30 p-4 rounded-lg">
-                <h4 className="text-white font-semibold mb-2">Current Roles</h4>
-                <ul className="text-gray-400 text-sm space-y-1">
-                  <li>• Director, Alpha Cloud PTY LTD</li>
-                  <li>• Cloud Architect, CSL Behring</li>
-                  <li>• 15+ years consulting experience</li>
-                  <li>• Global delivery expertise</li>
-                </ul>
-              </div>
-              <div className="bg-black/30 p-4 rounded-lg">
-                <h4 className="text-white font-semibold mb-2">Key Expertise</h4>
-                <ul className="text-gray-400 text-sm space-y-1">
-                  <li>• Cloud & hybrid architecture</li>
-                  <li>• Cybersecurity solutions</li>
-                  <li>• Network transformation</li>
-                  <li>• Digital transformation</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="mt-8 p-6 bg-black/30 rounded-lg">
-              <h4 className="text-white font-semibold mb-3">Notable Clients & Organisations</h4>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-gray-400 text-sm">
-                <span>• CSL Behring</span>
-                <span>• Toyota Australia</span>
-                <span>• AEMO</span>
-                <span>• Telstra</span>
-                <span>• Metro Trains Melbourne</span>
-                <span>• NTT Ltd</span>
-                <span>• Accenture</span>
-                <span>• Dimension Data</span>
-                <span>• Caterpillar USA</span>
-                <span>• BAE Systems</span>
-                <span>• Royal Saudi Air Force</span>
-                <span>• Heritage Bank</span>
-              </div>
-            </div>
           </div>
           <div className="order-1 lg:order-2">
             <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl">

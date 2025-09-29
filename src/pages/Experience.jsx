@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 
 const Experience = () => {
@@ -90,10 +90,10 @@ const Experience = () => {
     <section id="experience" className="py-20 bg-black pt-28">
       <div className="container mx-auto px-4 md:px-8">
         <motion.div
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, threshold: 0.1 }}
-          variants={fadeInUp}
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.3 }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl font-bold text-white mb-4">Client Portfolio & Experience</h2>
@@ -102,125 +102,132 @@ const Experience = () => {
           </p>
         </motion.div>
 
-        {!selectedCompany ? (
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, threshold: 0.1 }}
-            variants={staggerContainer}
-            className="grid grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
-          >
-            {companies.map((company) => (
-              <motion.div
-                key={company.id}
-                variants={fadeInUp}
-                whileHover={{ y: -8, transition: { duration: 0.2 } }}
-                onClick={() => setSelectedCompany(company)}
-                className="group bg-gray-800/50 p-8 rounded-xl border border-gray-700 hover:border-red-500/50 transition-all duration-300 cursor-pointer hover:shadow-xl hover:shadow-red-500/10"
-              >
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-20 h-20 mb-4 bg-white rounded-lg p-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <img 
-                      src={company.logo} 
-                      alt={`${company.name} logo`} 
-                      className="w-full h-full object-contain"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.nextSibling.style.display = 'flex';
-                      }}
-                    />
-                    <div className="hidden w-full h-full bg-red-600 rounded items-center justify-center text-white font-bold text-sm">
-                      {company.name.split(' ').map(word => word[0]).join('')}
+        <AnimatePresence mode="wait">
+          {!selectedCompany ? (
+            <motion.div
+              key="grid"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
+            >
+              {companies.map((company, index) => (
+                <motion.div
+                  key={company.id}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ y: -8, transition: { duration: 0.2 } }}
+                  onClick={() => setSelectedCompany(company)}
+                  className="group bg-gray-800/50 p-8 rounded-xl border border-gray-700 hover:border-red-500/50 transition-all duration-300 cursor-pointer hover:shadow-xl hover:shadow-red-500/10"
+                >
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-20 h-20 mb-4 bg-white rounded-lg p-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <img 
+                        src={company.logo} 
+                        alt={`${company.name} logo`} 
+                        className="w-full h-full object-contain"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.nextSibling.style.display = 'flex';
+                        }}
+                      />
+                      <div className="hidden w-full h-full bg-red-600 rounded items-center justify-center text-white font-bold text-sm">
+                        {company.name.split(' ').map(word => word[0]).join('')}
+                      </div>
+                    </div>
+                    <h3 className="text-white font-semibold text-lg group-hover:text-red-400 transition-colors duration-300">
+                      {company.name}
+                    </h3>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          ) : (
+            <motion.div
+              key="detail"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="max-w-5xl mx-auto"
+            >
+              <div className="bg-gray-800/50 p-8 rounded-xl border border-gray-700">
+                <div className="flex items-center mb-6">
+                  <button
+                    onClick={() => setSelectedCompany(null)}
+                    className="text-red-400 hover:text-red-300 mr-4 transition-colors duration-300"
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                  </button>
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-white rounded-lg p-2 flex items-center justify-center mr-4">
+                      <img 
+                        src={selectedCompany.logo} 
+                        alt={`${selectedCompany.name} logo`} 
+                        className="w-full h-full object-contain"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.nextSibling.style.display = 'flex';
+                        }}
+                      />
+                      <div className="hidden w-full h-full bg-red-600 rounded items-center justify-center text-white font-bold text-xs">
+                        {selectedCompany.name.split(' ').map(word => word[0]).join('')}
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-semibold text-white">{selectedCompany.name}</h3>
+                      <p className="text-red-400 font-medium">{selectedCompany.role} • {selectedCompany.period}</p>
                     </div>
                   </div>
-                  <h3 className="text-white font-semibold text-lg group-hover:text-red-400 transition-colors duration-300">
-                    {company.name}
-                  </h3>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        ) : (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-            className="max-w-5xl mx-auto"
-          >
-            <div className="bg-gray-800/50 p-8 rounded-xl border border-gray-700">
-              <div className="flex items-center mb-6">
-                <button
-                  onClick={() => setSelectedCompany(null)}
-                  className="text-red-400 hover:text-red-300 mr-4 transition-colors duration-300"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
-                  </svg>
-                </button>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-white rounded-lg p-2 flex items-center justify-center mr-4">
-                    <img 
-                      src={selectedCompany.logo} 
-                      alt={`${selectedCompany.name} logo`} 
-                      className="w-full h-full object-contain"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.nextSibling.style.display = 'flex';
-                      }}
-                    />
-                    <div className="hidden w-full h-full bg-red-600 rounded items-center justify-center text-white font-bold text-xs">
-                      {selectedCompany.name.split(' ').map(word => word[0]).join('')}
-                    </div>
+                
+                <p className="text-gray-400 mb-6 text-lg leading-relaxed">
+                  {selectedCompany.details.description}
+                </p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div>
+                    <h4 className="text-white font-medium mb-3">Technologies</h4>
+                    <ul className="text-gray-400 space-y-2">
+                      {selectedCompany.details.technologies.map((tech, index) => (
+                        <li key={index} className="flex items-center">
+                          <span className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2"></span>
+                          {tech}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-semibold text-white">{selectedCompany.name}</h3>
-                    <p className="text-red-400 font-medium">{selectedCompany.role} • {selectedCompany.period}</p>
+                    <h4 className="text-white font-medium mb-3">Scope</h4>
+                    <ul className="text-gray-400 space-y-2">
+                      {selectedCompany.details.scope.map((item, index) => (
+                        <li key={index} className="flex items-center">
+                          <span className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2"></span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium mb-3">Impact</h4>
+                    <ul className="text-gray-400 space-y-2">
+                      {selectedCompany.details.impact.map((impact, index) => (
+                        <li key={index} className="flex items-center">
+                          <span className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2"></span>
+                          {impact}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
-              
-              <p className="text-gray-400 mb-6 text-lg leading-relaxed">
-                {selectedCompany.details.description}
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div>
-                  <h4 className="text-white font-medium mb-3">Technologies</h4>
-                  <ul className="text-gray-400 space-y-2">
-                    {selectedCompany.details.technologies.map((tech, index) => (
-                      <li key={index} className="flex items-center">
-                        <span className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2"></span>
-                        {tech}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="text-white font-medium mb-3">Scope</h4>
-                  <ul className="text-gray-400 space-y-2">
-                    {selectedCompany.details.scope.map((item, index) => (
-                      <li key={index} className="flex items-center">
-                        <span className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2"></span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="text-white font-medium mb-3">Impact</h4>
-                  <ul className="text-gray-400 space-y-2">
-                    {selectedCompany.details.impact.map((impact, index) => (
-                      <li key={index} className="flex items-center">
-                        <span className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2"></span>
-                        {impact}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
