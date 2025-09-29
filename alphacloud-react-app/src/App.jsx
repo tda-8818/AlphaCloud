@@ -9,11 +9,10 @@ import MessageBox  from "./components/MessageBox";
 /* ────────────────────── Section components ────────────────────── */
 import Home        from "./pages/Home";        
 import Services    from "./pages/Services";    
-import Products    from "./pages/Products";
-import Contact     from "./pages/Contact";
 import Solutions   from "./pages/Solutions";
-import Partners    from "./pages/Partners";
+import Contact     from "./pages/Contact";
 import About       from "./pages/About";
+import Experience  from "./pages/Experience";
 
 /* ────────────────────── App component ────────────────────── */
 const App = () => {
@@ -43,9 +42,11 @@ const App = () => {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
+      const headerHeight = 80; // Account for fixed header
+      const elementPosition = element.offsetTop - headerHeight;
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
       });
     }
     // Close mobile menu after clicking
@@ -59,6 +60,8 @@ const App = () => {
     <div className="scroll-smooth">
       {/* Global page‑wide CSS */}
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
         body {
           font-family: 'Inter', sans-serif;
           background-color: #121212;
@@ -70,6 +73,33 @@ const App = () => {
         }
         html {
           scroll-behavior: smooth;
+        }
+
+        @keyframes glow {
+          from {
+            text-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+          }
+          to {
+            text-shadow: 0 0 30px rgba(239, 68, 68, 0.8), 0 0 40px rgba(239, 68, 68, 0.3);
+          }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+          background: #1f2937;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+          background: #dc2626;
+          border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+          background: #ef4444;
         }
       `}</style>
 
@@ -99,19 +129,14 @@ const App = () => {
           <Services />
         </section>
 
-        {/* Products Section */}
-        <section id="products">
-          <Products />
-        </section>
-
         {/* Solutions Section */}
         <section id="solutions">
           <Solutions />
         </section>
 
-        {/* Partners Section */}
-        <section id="partners">
-          <Partners />
+        {/* Experience Section */}
+        <section id="experience">
+          <Experience />
         </section>
 
         {/* About Section */}

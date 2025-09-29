@@ -1,33 +1,82 @@
-// Solutions.jsx
 import React from 'react';
+import { motion } from 'framer-motion';
+import { fadeInUp, staggerContainer } from '../utils/animations';
 
-const Solutions = () => (
-  <section id="solutions" className="py-20 bg-black min-h-screen pt-20">
-    <div className="container mx-auto px-4 md:px-8 text-center">
-      <h2 className="text-4xl font-bold text-white mb-4">Our Solutions</h2>
-      <p className="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
-        Customized cloud solutions for various industries and use cases.
-      </p>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-        {/* Solution Card 1 */}
-        <div className="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-red-500/30 transition-shadow">
-          <h3 className="text-2xl font-semibold text-white mb-2">Enterprise Migration</h3>
-          <p className="text-gray-400">Complete migration services from on-premises to cloud infrastructure with minimal downtime.</p>
-        </div>
-        {/* Solution Card 2 */}
-        <div className="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-red-500/30 transition-shadow">
-          <h3 className="text-2xl font-semibold text-white mb-2">DevOps Automation</h3>
-          <p className="text-gray-400">Streamline your development pipeline with CI/CD automation and infrastructure as code.</p>
-        </div>
-        {/* Solution Card 3 */}
-        <div className="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-red-500/30 transition-shadow">
-          <h3 className="text-2xl font-semibold text-white mb-2">Data Analytics</h3>
-          <p className="text-gray-400">Transform your data into actionable insights with our analytics and business intelligence solutions.</p>
-        </div>
+const Solutions = () => {
+  const solutions = [
+    {
+      icon: "🏦",
+      title: "Financial Services",
+      description: "APRA-compliant cloud infrastructure and cybersecurity solutions for banks, credit unions, and fintech companies.",
+      features: ["APRA CPS 234 compliance", "PCI DSS certification support", "Fraud detection systems", "Real-time transaction monitoring"]
+    },
+    {
+      icon: "🏥",
+      title: "Healthcare & Life Sciences",
+      description: "Privacy-first cloud solutions ensuring patient data protection and regulatory compliance.",
+      features: ["HIPAA compliance frameworks", "Medical device security", "Secure patient portals", "Clinical data analytics"]
+    },
+    {
+      icon: "🏛️",
+      title: "Government & Public Sector",
+      description: "Sovereign cloud solutions with enhanced security controls for government agencies and public organisations.",
+      features: ["Protected-level classifications", "Australian data sovereignty", "Secure citizen services", "Digital transformation consulting"]
+    },
+    {
+      icon: "🏭",
+      title: "Manufacturing & Industrial",
+      description: "Secure industrial IoT and operational technology protection for manufacturing environments.",
+      features: ["OT/IT network segmentation", "Industrial IoT security", "SCADA system protection", "Supply chain security"]
+    }
+  ];
+
+  return (
+    <section id="solutions" className="py-20 bg-gray-900 pt-28">
+      <div className="container mx-auto px-4 md:px-8">
+        <motion.div
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, threshold: 0.1 }}
+          variants={fadeInUp}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold text-white mb-4">Industry Solutions</h2>
+          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+            Specialised cybersecurity and cloud solutions tailored for specific industry requirements.
+          </p>
+        </motion.div>
+        
+        <motion.div
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, threshold: 0.1 }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
+        >
+          {solutions.map((solution, index) => (
+            <motion.div
+              key={index}
+              variants={fadeInUp}
+              className="bg-black/50 p-8 rounded-xl border border-gray-700 hover:border-red-500/50 transition-all"
+            >
+              <div className="flex items-start space-x-4">
+                <div className="text-3xl">{solution.icon}</div>
+                <div>
+                  <h3 className="text-2xl font-semibold text-white mb-3">{solution.title}</h3>
+                  <p className="text-gray-400 mb-4">{solution.description}</p>
+                  <ul className="text-gray-400 text-sm space-y-2">
+                    {solution.features.map((feature, featureIndex) => (
+                      <li key={featureIndex}>• {feature}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Solutions;
