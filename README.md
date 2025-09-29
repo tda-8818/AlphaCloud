@@ -1,12 +1,82 @@
-# React + Vite
+<img width="1512" height="822" alt="Screenshot 2025-09-29 at 9 54 44 pm" src="https://github.com/user-attachments/assets/4cd9ccfb-1b18-48d7-b40a-e37c1d3e670d" /># Alpha Cloud - Enterprise Cloud Security Solutions
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Alpha Cloud Banner](./public/preview-logo.png)
 
-Currently, two official plugins are available:
+> Professional portfolio website for Alpha Cloud PTY LTD, showcasing 15+ years of enterprise cloud architecture and cybersecurity expertise.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🌐 **Live Site**: [alphacloud.com.au](https://alphacloud.com.au) *(replace with your actual URL)*
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📋 Table of Contents
+
+- [About](#about)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Screenshots](#screenshots)
+- [Project Structure](#project-structure)
+- [Deployment](#deployment)
+- [Contact](#contact)
+- [License](#license)
+
+---
+
+## 🎯 About
+
+Alpha Cloud is a professional portfolio website showcasing enterprise-grade cloud architecture, cybersecurity solutions, and digital transformation services. 
+
+---
+
+## ✨ Features
+
+### 🎨 Modern Design
+- Dark theme with red accent colours
+- Fully responsive design for all devices
+- Smooth scroll animations using Framer Motion
+- Interactive company portfolio with detailed project breakdowns
+
+### 💼 Interactive Portfolio
+- Click-to-expand company cards
+- Detailed project descriptions with technologies, scope, and impact
+- Real logos from major enterprise clients
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+- **React 18** - UI library
+- **Vite** - Build tool and dev server
+- **Framer Motion** - Animation library
+- **Tailwind CSS** - Utility-first CSS framework
+
+### Deployment
+- **Netlify** - Hosting and continuous deployment
+- **GitHub** - Version control
+
+### Tools & Libraries
+- **React Hooks** - State management
+- **Clearbit Logo API** - Company logo fetching
+- **Custom animations** - Scroll-based animations with viewport detection
+
+---
+
+## 📸 Screenshots
+
+### Hero Section
+![Hero Section](./screenshots/hero.png)
+*Landing page with animated hero text and call-to-action buttons*
+
+### Services Section
+![Services](./screenshots/services.png)
+*Comprehensive cybersecurity and cloud services overview*
+
+### Experience Portfolio
+![Experience Grid](./screenshots/experience-grid.png)
+*Interactive company portfolio with major client logos*
+
+![Experience Detail](./screenshots/experience-detail.png)
+*Detailed project breakdown with technologies and impact*
+
+---
+
